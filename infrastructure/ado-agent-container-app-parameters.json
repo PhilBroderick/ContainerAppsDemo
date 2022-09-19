@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "name": {
+        "value": "pb-container-app"
+      },
+      "containerAppEnvId": {
+        "value": ""
+      },
+      "containerImage": {
+        "value": "ado-agent:latest"
+      },
+      "containerRegistry": {
+        "value": "pbacreaug.azurecr.io"
+      },
+      "registryUsername": {
+        "value": "pbacreaug"
+      },
+      "adoUrl": {
+        "value": "https://dev.azure.com/PhilBroderickADO"
+      },
+      "adoAgentPool": {
+        "value": "Container Apps Agent Pool"
+      }
+    }
+  }
