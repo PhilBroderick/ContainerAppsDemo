@@ -24,8 +24,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommend
     libssl1.1 \
     libstdc++6 \
     zlib1g \
-&& rm -rf /var/lib/apt/lists/* 
+    && rm -rf /var/lib/apt/lists/* 
 
+# Install dotnet
 RUN curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -Channel 6.0 -InstallDir /usr/share/dotnet \
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
@@ -37,7 +38,7 @@ RUN dpkg -i packages-microsoft-prod.deb
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install powershell -y
-    
+
 # Can be 'linux-x64', 'linux-arm64', 'linux-arm', 'rhel.6-x64'.
 ENV TARGETARCH=linux-x64
 

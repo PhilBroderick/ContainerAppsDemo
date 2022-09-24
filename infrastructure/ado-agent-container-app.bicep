@@ -16,7 +16,7 @@ param adoToken string
 resource adoAgentContainerApp 'Microsoft.App/containerApps@2022-03-01' = {
   name: name
   location: location
-  properties: any({
+  properties: {
     configuration: {
       registries: [
         {
@@ -70,28 +70,32 @@ resource adoAgentContainerApp 'Microsoft.App/containerApps@2022-03-01' = {
           ]
         }
       ]
-      rules: [
+      scale: {
+        maxReplicas: 3
+        minReplicas: 0
+        rules: [
           {
-              name: 'auzre-pipelines-scaler'
-              custom: {
-                type: 'azure-pipelines'
-                metadata: {
-                  poolID:  10
-                  targetPipelinesQueueLength: 1
-                }
-                auth: [
-                  {
-                    secretRef: 'azp-token'
-                    triggerParameter: 'personalAccessToken'
-                  }
-                  {
-                    secretRef: 'azp-url'
-                    triggerParameter: 'organizationURL'
-                  }
-                ]
+            name: 'auzre-pipelines-scalar'
+            custom: {
+              type: 'azure-pipelines'
+              metadata: {
+                poolID: '10'
+                targetPipelinesQueueLength: '1'
               }
+              auth: [
+                {
+                  secretRef: 'azp-token'
+                  triggerParameter: 'personalAccessToken'
+                }
+                {
+                  secretRef: 'azp-url'
+                  triggerParameter: 'organizationURL'
+                }
+              ]
+            }
           }
         ]
+      }
     }
-  })
+  }
 }
