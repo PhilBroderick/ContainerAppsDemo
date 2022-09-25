@@ -18,7 +18,7 @@ The talk covers deploying Container Apps using bicep, as well as creating a self
    az group create -n <RG_NAME> -l <LOCATION>
    ```
 
-2. Create the container registry (ensure you are in `/infrastructure` directory), providing any parameters required:
+2. Create the container registry (ensure you are in `/deploy` directory), providing any parameters required:
 
    ```cmd
    az deployment group create -g <RG_NAME> --template-file .\container-registry.bicep

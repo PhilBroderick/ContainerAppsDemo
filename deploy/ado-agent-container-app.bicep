@@ -75,7 +75,7 @@ resource adoAgentContainerApp 'Microsoft.App/containerApps@2022-03-01' = {
         minReplicas: 0
         rules: [
           {
-            name: 'auzre-pipelines-scalar'
+            name: 'azure-pipelines-scalar'
             custom: {
               type: 'azure-pipelines'
               metadata: {
